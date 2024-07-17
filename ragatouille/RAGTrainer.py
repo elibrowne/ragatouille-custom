@@ -213,7 +213,7 @@ class RAGTrainer:
         self.data_dir = "./data/" # added for training from same data each run
         if not self.training_triplets:
             total_triplets = sum(
-                1 for _ in open(str(self.data_dir / "triples.train.colbert.jsonl"), "r")
+                1 for _ in open(str(self.data_dir + "triples.train.colbert.jsonl"), "r")
             )
         else:
             total_triplets = len(self.training_triplets)

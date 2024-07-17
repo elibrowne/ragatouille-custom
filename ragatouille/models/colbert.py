@@ -443,9 +443,9 @@ class ColBERT(LateInteractionModel):
         training_config.nway = 2
         with Run().context(self.run_config):
             trainer = Trainer(
-                triples=str(data_dir / "triples.train.colbert.jsonl"),
-                queries=str(data_dir / "queries.train.colbert.tsv"),
-                collection=str(data_dir / "corpus.train.colbert.tsv"),
+                triples=str(data_dir + "triples.train.colbert.jsonl"),
+                queries=str(data_dir + "queries.train.colbert.tsv"),
+                collection=str(data_dir + "corpus.train.colbert.tsv"),
                 config=training_config,
             )
 
