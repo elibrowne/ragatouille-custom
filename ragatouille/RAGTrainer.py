@@ -136,7 +136,7 @@ class RAGTrainer:
                 language_code=self.language_code,
                 model_size=hard_negative_model_size,
             )
-            self.negative_miner.build_index(self.collection)
+            self.negative_miner.build_index(collection = self.collection, save_index = True, save_path = "hard-neg-index")
 
         self.data_processor = TrainingDataProcessor(
             collection=self.collection,
@@ -199,7 +199,7 @@ class RAGTrainer:
             nbits: int - number of bits used for vector compression by the traiened model. 2 is usually ideal.
             maxsteps: int - End training early after maxsteps steps.
             use_ib_negatives: bool - Whether to use in-batch negatives to calculate loss or not.
-            learning_rate: float - ColBERT litterature usually has this performing best between 3e-6 - 2e-5 depending on data size
+            learning_rate: float - ColBERT literature usually has this performing best between 3e-6 - 2e-5 depending on data size
             dim: int - Size of individual vector representations.
             doc_maxlen: int - The maximum length after which passages will be truncated
             warmup_steps: Union[int, Literal["auto"]] - How many warmup steps to use for the learning rate.

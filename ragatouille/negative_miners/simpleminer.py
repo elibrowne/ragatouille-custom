@@ -34,7 +34,7 @@ class SimpleMiner(HardNegativeMiner):
     def __init__(
         self,
         language_code: str,
-        model_size: Literal["small", "base", "large"] = "small",
+        model_size: Literal["small", "base", "large"] = "base", # changed from "small"
     ) -> None:
         self.n_gpu = torch.cuda.device_count()
         self.target_language = language_code
@@ -47,6 +47,7 @@ class SimpleMiner(HardNegativeMiner):
         self.model = SentenceTransformer(hub_model)
         self.has_index = False
         self.min_rank = 10
+        print("Initialized custom SimpleMiner") # added for debugging
 
     def build_index(
         self,
