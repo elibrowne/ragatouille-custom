@@ -136,7 +136,8 @@ class RAGTrainer:
                 language_code=self.language_code,
                 model_size=hard_negative_model_size,
             )
-            self.negative_miner.build_index(collection = self.collection, save_index = True, save_path = "hard-neg-index")
+            # Edited to add save_index, save_path parameters
+            self.negative_miner.build_index(collection = self.collection, save_index = True, save_path = "hard-neg-index/")
 
         self.data_processor = TrainingDataProcessor(
             collection=self.collection,
