@@ -137,7 +137,7 @@ class RAGTrainer:
                 model_size=hard_negative_model_size,
             )
             # Edited to add save_index, save_path parameters
-            self.negative_miner.build_index(collection = self.collection, save_index = True, save_path = "hard-neg-index/")
+            self.negative_miner.build_index(collection = self.collection, save_index = True, save_path = "hard-neg-index.tsv")
 
         self.data_processor = TrainingDataProcessor(
             collection=self.collection,
@@ -210,6 +210,7 @@ class RAGTrainer:
         Returns:
             model_path: str - Path to the trained model.
         """
+        self.data_dir = "./data/" # added for training from same data each run
         if not self.training_triplets:
             total_triplets = sum(
                 1 for _ in open(str(self.data_dir / "triples.train.colbert.jsonl"), "r")
